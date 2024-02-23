@@ -21,6 +21,8 @@ import {
   userData
 
 } from "./constants.js";
+const audioSlider = document.getElementById('audio-slider');
+
 pauseButton.addEventListener("click", pauseSong);
 
 nextButton.addEventListener("click", playNextSong);
@@ -43,6 +45,22 @@ audio.addEventListener("ended", () => {
     highlightCurrentSong();
     setPlayButtonAccessibleText();
   }
+});
+
+
+audio.addEventListener('loadedmetadata', () => {
+    audioSlider.max = audio.duration;
+});
+
+audio.addEventListener('timeupdate', () => {
+  audioSlider.value = audio.currentTime;
+  // const minTime= document.getElementById("min-time-music");
+  // minTime.textContent = Math.floor(audio.currentTime)
+    
+});
+
+audioSlider.addEventListener('input', () => {
+    audio.currentTime = audioSlider.value;
 });
 
 playButton.addEventListener("click", handlePlayButtonClick);

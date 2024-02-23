@@ -17,6 +17,11 @@ const playSong = (id) => {
   setPlayerDisplay();
   setPlayButtonAccessibleText();
   audio.play();
+  function updateTime() {
+    const currentTime = audio.currentTime;
+   
+}
+setInterval(updateTime, 1000);
 };
 
 const pauseSong = () => {
@@ -68,10 +73,12 @@ const setPlayerDisplay = () => {
   const playingSong = document.getElementById("player-song-title");
   const songArtist = document.getElementById("player-song-artist");
   const nextSong= document.getElementById("player-next-song-artist");
+  const maxTime= document.getElementById("max-time-music");
   const currentSongIndex = getCurrentSongIndex();
   const nextSongTitle = userData?.songs[currentSongIndex + 1].title;
   const currentTitle = userData?.currentSong?.title;
   const currentArtist = userData?.currentSong?.artist;
+  maxTime.textContent = userData?.currentSong?.duration
 
 nextSong.textContent= nextSongTitle
   playingSong.textContent = currentTitle ? currentTitle : "";
@@ -92,11 +99,12 @@ const highlightCurrentSong = () => {
 };
 
 const renderSongs = (array) => {
+  
   const songsHTML = array
     .map((song) => {
       return `
         <li id="song-${song.id}" class="playlist-song text-black bg-primary rounded-md p-2">
-        <button class="playlist-song-info" onclick="playSong(${song.id})">
+        <button class="playlist-song-info" id="song-toPlay-${song.id}" onchange="playSong(${song.id})">
             <span class="playlist-song-title">${song.title}</span>
             <span class="playlist-song-artist">${song.artist}</span>
             <span class="playlist-song-duration">${song.duration}</span>
@@ -105,6 +113,7 @@ const renderSongs = (array) => {
         `;
     })
     .join("");
+   
 
   playlistSongs.innerHTML = songsHTML;
 };

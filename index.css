@@ -20,3 +20,32 @@
 
 }
 
+#audio-slider {
+  -webkit-appearance: none;
+  min-width: 83%;
+  height: 10px;
+  background: #e8e8e8;
+  outline: none;
+  opacity: 0.7;
+  border-radius: 5px;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+#audio-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #88cfff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#audio-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+background-color: #b5e1ff;
+  cursor: pointer;
+}
+
