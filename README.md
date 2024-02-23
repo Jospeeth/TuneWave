@@ -17,7 +17,7 @@ This project is a simple music player application built with HTML, CSS, and Java
 - CSS (Tailwind CSS)
 - JavaScript
 
- Live Demo: <a href="https://tunewavee.netlify.app" target="_blank">CalorMate</a>
+ Live Demo: <a href="https://tunewavee.netlify.app" target="_blank">TuneWave</a>
 
 ### Prerequisites
 
