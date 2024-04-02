@@ -52,8 +52,8 @@ background-color: #b5e1ff;
 
 #volume-slider {
   -webkit-appearance: none;
-  min-width: 40%;
-  height: 10px;
+  min-width: 10%;
+  height: 5px;
   background: #e8e8e8;
   outline: none;
   opacity: 0.7;
@@ -65,12 +65,24 @@ background-color: #b5e1ff;
 #volume-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   background-color: #88cfff;
   border-radius: 50%;
   cursor: pointer;
 }
+
+.volume:hover{
+cursor: pointer;
+color: #79c7fb;
+transition: ease-in-out .3s;
+}
+.volume-text {
+  width: 20px; /* Establece un ancho fijo para el span */
+  text-align: center; /* Centra el texto dentro del span */
+  display: inline-block; /* Permite que el ancho funcione correctamente */
+}
+
 
 
 
