@@ -22,6 +22,8 @@ import {
 
 } from "./constants.js";
 const audioSlider = document.getElementById('audio-slider');
+const volumeSlider= document.getElementById('volume-slider');
+const volume = document.getElementById("volume")
 
 pauseButton.addEventListener("click", pauseSong);
 
@@ -34,6 +36,7 @@ shuffleButton.addEventListener("click", shuffle);
 audio.addEventListener("ended", () => {
   const currentSongIndex = getCurrentSongIndex();
   const nextSongExists = userData?.songs[currentSongIndex + 1] !== undefined;
+  
 
   if (nextSongExists) {
     playNextSong();
@@ -54,13 +57,21 @@ audio.addEventListener('loadedmetadata', () => {
 
 audio.addEventListener('timeupdate', () => {
   audioSlider.value = audio.currentTime;
-  // const minTime= document.getElementById("min-time-music");
-  // minTime.textContent = Math.floor(audio.currentTime)
+  const minTime= document.getElementById("min-time-music");
+  minTime.textContent = Math.round(audio.currentTime / 60) + ":" + ("0" + Math.floor(audio.currentTime % 60)).slice(-2);
+ 
     
 });
 
 audioSlider.addEventListener('input', () => {
     audio.currentTime = audioSlider.value;
+});
+
+
+volumeSlider.addEventListener('input', () => {
+  const volumeValue = volumeSlider.value;
+  audio.volume = volumeValue;
+  volume.textContent = Math.round(volumeValue * 100);
 });
 
 playButton.addEventListener("click", handlePlayButtonClick);
